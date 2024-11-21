@@ -14,7 +14,7 @@ kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/late
 echo "Installing ArgoCD"
 kubectl create ns argocd && true
 sleep 30
-kubectl apply -f https://raw.githubusercontent.com/B58-CloudDevOps/learn-kubernetes/refs/heads/main/arogCD/argo.yaml -n argocd cd
+kubectl apply -f https://raw.githubusercontent.com/konda2srikanth/learn-kubernetes/refs/heads/main/arogCD/argo.yaml -n argocd cd
 EOF
   }
 }
