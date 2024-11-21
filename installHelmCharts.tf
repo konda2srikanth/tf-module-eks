@@ -21,21 +21,21 @@ EOF
 
 
 
-# Destroy time provisioners to delete the lb
-resource "null_resource" "helm_uninstall" {
+# # Destroy time provisioners to delete the lb
+# resource "null_resource" "helm_uninstall" {
 
-  #   depends_on = [aws_eks_cluster.main, aws_eks_node_group.node]
-  provisioner "local-exec" {
-    when    = destroy
-    command = <<EOF
-rm -rf .kube/config
-aws eks update-kubeconfig --name "${var.env}-eks"
-echo "UnInstalling Nginx Ingress Controller"
-helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-ls -ltr
-echo "${path.module}"
-helm uninstall ngx-ingress
-helm list
-EOF
-  }
-}
+#   #   depends_on = [aws_eks_cluster.main, aws_eks_node_group.node]
+#   provisioner "local-exec" {
+#     when    = destroy
+#     command = <<EOF
+# rm -rf .kube/config
+# aws eks update-kubeconfig --name "${var.env}-eks"
+# echo "UnInstalling Nginx Ingress Controller"
+# helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+# ls -ltr
+# echo "${path.module}"
+# helm uninstall ngx-ingress
+# helm list
+# EOF
+#   }
+# }
