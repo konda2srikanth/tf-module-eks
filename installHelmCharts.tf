@@ -15,7 +15,7 @@ kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/late
 echo "Installing ArgoCD"
 kubectl create ns argocd && true
 sleep 30
-kubectl apply -f https://raw.githubusercontent.com/B58-CloudDevOps/learn-kubernetes/refs/heads/main/arogCD/argo.yaml -n argocd 
+kubectl apply -f https://raw.githubusercontent.com/konda2srikanth/learn-kubernetes/refs/heads/main/arogCD/argo.yaml -n argocd 
 
 # echo "Installing Nginx Ingress Controller"
 # helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
