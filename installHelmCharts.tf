@@ -6,7 +6,8 @@ resource "null_resource" "helm_install_boot" {
   }
   provisioner "local-exec" {
     command = <<EOF
-
+rm -rf .kube/config
+sleep 19
 aws eks update-kubeconfig --name "${var.env}-eks"
 kubectl get nodes
 echo "Installing Metrics Server"
@@ -14,7 +15,14 @@ kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/late
 echo "Installing ArgoCD"
 kubectl create ns argocd && true
 sleep 30
-kubectl apply -f https://raw.githubusercontent.com/konda2srikanth/learn-kubernetes/refs/heads/main/arogCD/argo.yaml -n argocd 
+kubectl apply -f https://raw.githubusercontent.com/B58-CloudDevOps/learn-kubernetes/refs/heads/main/arogCD/argo.yaml -n argocd 
+
+# echo "Installing Nginx Ingress Controller"
+# helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+# helm repo list 
+# ls -ltr
+# echo "${path.module}"
+# helm upgrade -i ngx-ingres ingress-nginx/ingress-nginx -f ${path.module}/ingress.yaml
 EOF
   }
 }
